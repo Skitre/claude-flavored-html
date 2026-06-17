@@ -1,0 +1,169 @@
+/* ============================================================
+   408 · 树与图  deck-local component system
+   全部用 base.css 的 token，warm / dark 两套主题都自动适配。
+   ============================================================ */
+
+/* ---------- slide canvas ---------- */
+.tpl .slide{padding:60px 84px;justify-content:center}
+.slide-fx{position:absolute;inset:0;z-index:0;pointer-events:none}
+.slide-inner{position:relative;z-index:1;width:100%;max-width:1240px;margin:0 auto}
+.tpl .slide > .notes{position:absolute}
+
+/* ---------- eyebrow / title / rule ---------- */
+.eyebrow2{display:inline-flex;align-items:center;gap:9px;font-size:14px;font-weight:600;
+  letter-spacing:.14em;text-transform:uppercase;color:var(--accent)}
+.eyebrow2::before{content:"";width:22px;height:2px;border-radius:2px;background:var(--accent)}
+.s-title{font-family:var(--font-display);font-size:46px;line-height:1.12;font-weight:600;
+  letter-spacing:var(--letter-tight);margin:14px 0 6px;color:var(--text-1)}
+.s-title.sm{font-size:38px}
+.rule{height:3px;width:64px;border-radius:3px;background:var(--grad);margin:14px 0 22px}
+.lead2{font-size:19px;line-height:1.6;color:var(--text-2);max-width:70ch}
+.snum{position:absolute;top:40px;right:54px;z-index:1;font-family:var(--font-display);
+  font-size:30px;font-weight:600;color:var(--text-3);opacity:.55;letter-spacing:.02em}
+
+/* ---------- chips / tags ---------- */
+.chips{display:flex;flex-wrap:wrap;gap:9px}
+.chip{display:inline-flex;align-items:center;gap:7px;padding:6px 14px;border-radius:999px;
+  font-size:14px;font-weight:500;background:var(--surface-2);color:var(--text-2);
+  border:1px solid var(--border)}
+.chip.on{background:color-mix(in srgb,var(--accent) 14%,transparent);
+  color:var(--accent);border-color:color-mix(in srgb,var(--accent) 36%,transparent)}
+.chip .d{width:7px;height:7px;border-radius:50%;background:var(--accent)}
+
+/* ---------- cards ---------- */
+.cardx{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);
+  padding:20px 22px;box-shadow:var(--shadow);position:relative;overflow:hidden}
+.cardx.flat{box-shadow:none;background:var(--surface-2)}
+.cardx h4{font-family:var(--font-display);font-size:19px;font-weight:600;margin:0 0 8px;color:var(--text-1)}
+.cardx p{font-size:15.5px;line-height:1.6;color:var(--text-2);margin:0}
+.cardx .ic{font-size:22px;margin-bottom:8px;display:block}
+.card-top{border-top:3px solid var(--accent)}
+
+/* ---------- callouts ---------- */
+.callout{position:relative;border:1px solid var(--border);border-left:4px solid var(--accent);
+  background:color-mix(in srgb,var(--accent) 7%,var(--surface));
+  border-radius:0 var(--radius-sm) var(--radius-sm) 0;padding:14px 20px;font-size:16px;
+  line-height:1.62;color:var(--text-1)}
+.callout .lab{display:block;font-size:12.5px;font-weight:700;letter-spacing:.12em;
+  text-transform:uppercase;color:var(--accent);margin-bottom:5px}
+.callout.warn{border-left-color:var(--bad);background:color-mix(in srgb,var(--bad) 8%,var(--surface))}
+.callout.warn .lab{color:var(--bad)}
+.callout.key{border-left-color:var(--good);background:color-mix(in srgb,var(--good) 8%,var(--surface))}
+.callout.key .lab{color:var(--good)}
+.callout.tip{border-left-color:var(--accent-2);background:color-mix(in srgb,var(--accent-2) 8%,var(--surface))}
+.callout.tip .lab{color:var(--accent-2)}
+.callout b{color:var(--accent)}
+
+/* ---------- lists ---------- */
+.bul{list-style:none;margin:0;padding:0}
+.bul li{position:relative;padding:6px 0 6px 26px;font-size:16.5px;line-height:1.55;color:var(--text-1)}
+.bul li::before{content:"";position:absolute;left:2px;top:13px;width:8px;height:8px;border-radius:2px;
+  background:var(--accent);transform:rotate(45deg)}
+.bul.sm li{font-size:15px;padding-left:22px}
+.bul.sm li::before{top:11px;width:6px;height:6px}
+.bul li b{color:var(--accent)}
+.num{list-style:none;margin:0;padding:0;counter-reset:n}
+.num li{position:relative;padding:7px 0 7px 38px;font-size:16px;line-height:1.55;color:var(--text-1);counter-increment:n}
+.num li::before{content:counter(n);position:absolute;left:0;top:6px;width:24px;height:24px;border-radius:50%;
+  background:var(--grad);color:#fff;font-size:13px;font-weight:700;display:flex;align-items:center;justify-content:center}
+
+/* ---------- inline code & formula ---------- */
+.k{font-family:var(--font-mono);font-size:.92em;background:color-mix(in srgb,var(--accent) 12%,transparent);
+  color:var(--accent);padding:1px 7px;border-radius:5px;font-weight:500}
+.fml{font-family:var(--font-mono);font-size:19px;color:var(--text-1);background:var(--surface-2);
+  border:1px solid var(--border);border-radius:var(--radius-sm);padding:12px 18px;display:inline-block;letter-spacing:.01em}
+.fml b{color:var(--accent);font-weight:700}
+
+/* ---------- code block ---------- */
+.codeblock{font-family:var(--font-mono);font-size:14.5px;line-height:1.7;border:1px solid;
+  border-radius:var(--radius-sm);padding:16px 20px;overflow:auto;white-space:pre;margin:0;box-shadow:var(--shadow)}
+.codeblock.sm{font-size:13px;line-height:1.62}
+
+/* ---------- data table ---------- */
+.tbl{width:100%;border-collapse:collapse;font-size:15.5px;background:var(--surface);
+  border:1px solid var(--border);border-radius:var(--radius-sm);overflow:hidden}
+.tbl th,.tbl td{padding:10px 14px;text-align:left;border-bottom:1px solid var(--border);color:var(--text-1)}
+.tbl thead th{background:var(--surface-2);font-family:var(--font-display);font-weight:600;
+  font-size:14.5px;color:var(--text-1);letter-spacing:.01em}
+.tbl tbody tr:last-child td{border-bottom:none}
+.tbl td .k{font-size:.95em}
+.tbl.center th,.tbl.center td{text-align:center}
+.tbl.sm{font-size:14px}
+.tbl.sm th,.tbl.sm td{padding:7px 10px}
+.tbl .hi{color:var(--accent);font-weight:700}
+.tbl .mut{color:var(--text-3)}
+
+/* ---------- matrix / iteration table (mono) ---------- */
+.mtx{border-collapse:collapse;font-family:var(--font-mono);font-size:15px;background:var(--surface);
+  border:1px solid var(--border);border-radius:var(--radius-sm);overflow:hidden}
+.mtx th,.mtx td{padding:8px 13px;text-align:center;border:1px solid var(--border);color:var(--text-1)}
+.mtx thead th,.mtx tbody th{background:var(--surface-2);font-weight:700;color:var(--text-2)}
+.mtx .pick{background:color-mix(in srgb,var(--accent) 22%,transparent);color:var(--accent);font-weight:700}
+.mtx .done{color:var(--text-3)}
+.mtx .upd{background:color-mix(in srgb,var(--good) 22%,transparent);color:var(--good);font-weight:700}
+
+/* ---------- stat / big number ---------- */
+.stat{text-align:center}
+.stat .n{font-family:var(--font-display);font-size:54px;font-weight:700;line-height:1;
+  background:var(--grad);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent}
+.stat .l{font-size:14px;color:var(--text-2);margin-top:8px}
+
+/* ---------- SVG diagrams (trees / graphs) ---------- */
+.dg{display:block;margin:0 auto;overflow:visible}
+.dg-edge{stroke:var(--border-strong);stroke-width:2.2;fill:none}
+.dg-edge.hl{stroke:var(--accent);stroke-width:3.4}
+.dg-edge.dim{stroke:var(--border);stroke-dasharray:5 5}
+.dg-node{fill:var(--surface);stroke:var(--border-strong);stroke-width:2.2}
+.dg-node.hl{fill:var(--accent);stroke:var(--accent)}
+.dg-node.alt{fill:var(--accent-2);stroke:var(--accent-2)}
+.dg-node.gh{fill:var(--surface-2);stroke:var(--border)}
+.dg-t{fill:var(--text-1);font:600 17px var(--font-sans);text-anchor:middle;dominant-baseline:central}
+.dg-t.on{fill:#fff}
+.dg-w{fill:var(--accent-2);font:700 14px var(--font-mono);text-anchor:middle;dominant-baseline:central}
+.dg-w.box{paint-order:stroke;stroke:var(--bg);stroke-width:4px}
+.dg-lbl{fill:var(--text-2);font:500 14px var(--font-sans);text-anchor:middle}
+.dg-cap{fill:var(--text-3);font:500 13px var(--font-sans);text-anchor:middle}
+
+/* ---------- cover ---------- */
+.cover{position:relative;z-index:1;max-width:1180px;margin:0 auto}
+.cover .badge{display:inline-flex;align-items:center;gap:8px;font-size:14px;font-weight:600;
+  letter-spacing:.12em;text-transform:uppercase;color:var(--accent);
+  border:1px solid color-mix(in srgb,var(--accent) 32%,transparent);
+  background:color-mix(in srgb,var(--accent) 10%,transparent);padding:7px 16px;border-radius:999px}
+.cover h1{font-family:var(--font-display);font-size:84px;line-height:1.04;font-weight:600;
+  letter-spacing:var(--letter-tight);margin:26px 0 0;color:var(--text-1)}
+.cover h1 .g{background:var(--grad);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent}
+.cover .sub{font-size:21px;line-height:1.6;color:var(--text-2);margin-top:22px;max-width:60ch}
+
+/* ---------- section divider ---------- */
+.divider2{position:relative;z-index:1;text-align:center;max-width:1000px;margin:0 auto}
+.divider2 .pn{font-family:var(--font-display);font-size:150px;font-weight:700;line-height:1;
+  background:var(--grad);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;opacity:.92}
+.divider2 h2{font-family:var(--font-display);font-size:60px;font-weight:600;margin:6px 0 0;color:var(--text-1)}
+.divider2 .sub{font-size:19px;color:var(--text-2);margin-top:16px}
+
+/* ---------- footer chrome ---------- */
+.deck-foot{position:absolute;left:54px;right:54px;bottom:26px;z-index:5;display:flex;
+  align-items:center;justify-content:space-between;font-size:12.5px;color:var(--text-3);
+  letter-spacing:.06em;pointer-events:none}
+.deck-foot .slide-number{font-family:var(--font-mono)}
+
+/* ---------- keycap ---------- */
+.kbd{display:inline-flex;align-items:center;justify-content:center;min-width:26px;height:26px;
+  padding:0 8px;border-radius:6px;background:var(--surface);border:1px solid var(--border-strong);
+  box-shadow:0 2px 0 var(--border-strong);font-family:var(--font-mono);font-size:13px;
+  font-weight:600;color:var(--text-1)}
+
+/* ---------- small helpers ---------- */
+.mut{color:var(--text-2)}
+.mut3{color:var(--text-3)}
+.acc{color:var(--accent)}
+.wrap-2{display:grid;grid-template-columns:1fr 1fr;gap:24px;align-items:start}
+.wrap-3{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;align-items:start}
+.wrap-12{display:grid;grid-template-columns:1.1fr .9fr;gap:30px;align-items:center}
+.wrap-21{display:grid;grid-template-columns:1fr 1fr;gap:30px;align-items:center}
+.gap-s{gap:14px}
+.stack8>*+*{margin-top:8px}
+.stack14>*+*{margin-top:14px}
+.stack20>*+*{margin-top:20px}
+.tcenter{text-align:center}

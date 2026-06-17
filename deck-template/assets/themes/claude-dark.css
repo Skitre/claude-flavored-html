@@ -1,0 +1,64 @@
+/* ============================================================
+   theme: claude-dark  ——  obsidian × claude：深色底 + 紫/蓝/绿渐变
+   覆盖 base.css 的 :root tokens；T 键在 warm ↔ dark 间切换。
+   ============================================================ */
+:root{
+  --bg:#0D1117;            /* obsidian / GitHub dark */
+  --bg-soft:#0A0D12;
+  --surface:#161B22;
+  --surface-2:#21262D;
+  --border:rgba(255,255,255,.10);
+  --border-strong:rgba(255,255,255,.20);
+
+  --text-1:#E6EDF3;
+  --text-2:#9AA4B2;
+  --text-3:#6E7681;
+
+  --accent:#A855F7;        /* purple */
+  --accent-2:#58A6FF;      /* blue */
+  --accent-3:#3FB950;      /* green */
+
+  --good:#3FB950;
+  --warn:#F0883E;
+  --bad:#F85149;
+
+  --grad:linear-gradient(135deg,#A855F7 0%,#60A5FA 55%,#34D399 100%);
+  --grad-soft:linear-gradient(135deg,rgba(168,85,247,.18),rgba(88,166,255,.12) 60%,rgba(52,211,153,.12));
+
+  --radius:14px;--radius-sm:10px;--radius-lg:22px;
+  --shadow:0 10px 30px rgba(0,0,0,.45), 0 1px 3px rgba(0,0,0,.4);
+  --shadow-lg:0 28px 64px rgba(0,0,0,.55), 0 8px 20px rgba(0,0,0,.4);
+
+  --font-sans:'Inter','Noto Sans SC',-apple-system,BlinkMacSystemFont,sans-serif;
+  --font-display:'Space Grotesk','Inter','Noto Sans SC',sans-serif;
+  --font-serif:'Space Grotesk','Inter','Noto Sans SC',sans-serif;
+  --font-mono:'JetBrains Mono','IBM Plex Mono',SFMono-Regular,Menlo,monospace;
+  --letter-tight:-.02em;--letter-normal:-.01em;
+}
+
+/* 标题：粗一些，无衬线科技感 */
+.tpl .h1,.tpl .h2,.tpl h1.title,.tpl h2.title{font-weight:700}
+
+/* 装饰背景：紫蓝光晕 + 带径向遮罩的网格 */
+.slide-fx{
+  background:
+    radial-gradient(ellipse 50% 45% at 22% 28%, rgba(168,85,247,.20), transparent 62%),
+    radial-gradient(ellipse 48% 50% at 80% 72%, rgba(88,166,255,.15), transparent 62%);
+}
+.slide-fx::after{
+  content:"";position:absolute;inset:0;
+  background-image:
+    linear-gradient(rgba(120,140,180,.10) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(120,140,180,.10) 1px, transparent 1px);
+  background-size:54px 54px;
+  -webkit-mask-image:radial-gradient(ellipse at center, #000 30%, transparent 82%);
+          mask-image:radial-gradient(ellipse at center, #000 30%, transparent 82%);
+}
+
+/* 代码块深底配色 */
+.codeblock{background:#010409;color:#E6EDF3;border-color:rgba(255,255,255,.10)}
+.codeblock .c-kw{color:#FF7B72}
+.codeblock .c-cm{color:#6E7681}
+.codeblock .c-st{color:#A5D6FF}
+.codeblock .c-fn{color:#D2A8FF}
+.codeblock .c-nu{color:#79C0FF}

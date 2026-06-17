@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="zh-CN" data-themes="claude-warm,claude-dark" data-theme="claude-warm">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>课程 · 章节名</title>
+<link rel="stylesheet" href="assets/fonts.css">
+<link rel="stylesheet" href="assets/base.css">
+<link rel="stylesheet" href="assets/animations.css">
+<link rel="stylesheet" id="theme-link" href="assets/themes/claude-warm.css">
+<link rel="stylesheet" href="style.css">
+</head>
+<body class="tpl">
+<div class="deck">
+
+<!-- ============ 1. 封面 ============ -->
+<section class="slide is-active" data-title="封面">
+  <div class="slide-fx"></div>
+  <div class="cover">
+    <span class="badge" data-anim="fade-down">● 课程线 / 副标题</span>
+    <h1 data-anim="fade-up">主标题 <span class="g">渐变词</span></h1>
+    <p class="sub" data-anim="fade-up">一两句副说明,交代受众与目标。<br>可以换行。</p>
+    <div class="chips" style="margin-top:30px" data-anim="fade-up">
+      <span class="chip"><span class="d"></span>关键词</span>
+      <span class="chip">关键词</span>
+      <span class="chip">关键词</span>
+      <span class="chip">关键词</span>
+    </div>
+    <p class="mut3" style="margin-top:34px;font-size:14px">按 <span class="kbd">T</span> 切换暖色 / 深色 &nbsp;·&nbsp; <span class="kbd">S</span> 演讲者视图 &nbsp;·&nbsp; <span class="kbd">O</span> 总览 &nbsp;·&nbsp; <span class="kbd">←</span> <span class="kbd">→</span> 翻页</p>
+  </div>
+  <aside class="notes"><p>开场逐字稿:这一讲我们讲<strong>什么</strong>,默认听众<em>已有什么基础</em>。用 strong 标重点、em 标术语。</p></aside>
+</section>
+
+<!-- ============ 2. 内容页 · 两栏(表格 + callout) ============ -->
+<section class="slide" data-title="内容页示例">
+  <div class="slide-fx"></div>
+  <div class="slide-inner">
+    <div class="eyebrow2" data-anim="fade-up">1 · 小节名</div>
+    <h2 class="s-title" data-anim="fade-up">本页要讲清的一句话</h2>
+    <div class="rule"></div>
+    <div class="wrap-2" style="gap:30px">
+      <table class="tbl sm" data-anim="fade-up">
+        <thead><tr><th>术语</th><th>含义</th></tr></thead>
+        <tbody>
+          <tr><td class="hi">概念 A</td><td>解释……</td></tr>
+          <tr><td class="hi">概念 B</td><td>解释……</td></tr>
+          <tr><td class="hi">概念 C</td><td>解释……</td></tr>
+        </tbody>
+      </table>
+      <div class="stack14">
+        <div class="callout key" data-anim="fade-up"><span class="lab">重点</span>最该记住的结论放这里,<b>关键词加粗</b>。</div>
+        <div class="callout warn" data-anim="fade-up"><span class="lab">易错</span>常见陷阱写这里。</div>
+        <div class="callout tip" data-anim="fade-up"><span class="lab">提示</span>补充说明写这里。</div>
+      </div>
+    </div>
+  </div>
+  <aside class="notes"><p>这一页的逐字稿。</p></aside>
+</section>
+
+<!-- ============ 3. 内容页 · 图文(SVG + 卡片) ============ -->
+<section class="slide" data-title="图文示例">
+  <div class="slide-fx"></div>
+  <div class="slide-inner">
+    <div class="eyebrow2" data-anim="fade-up">2 · 小节名</div>
+    <h2 class="s-title" data-anim="fade-up">配一张自绘结构图</h2>
+    <div class="rule"></div>
+    <div class="wrap-12">
+      <div class="tcenter">
+        <svg class="dg" viewBox="0 0 300 175" width="330" data-anim="fade-up">
+          <line class="dg-edge" x1="150" y1="28" x2="80" y2="95"/>
+          <line class="dg-edge" x1="150" y1="28" x2="220" y2="95"/>
+          <line class="dg-edge hl" x1="80" y1="95" x2="50" y2="155"/>
+          <line class="dg-edge" x1="80" y1="95" x2="110" y2="155"/>
+          <circle class="dg-node hl" cx="150" cy="28" r="19"/><text class="dg-t on" x="150" y="28">A</text>
+          <circle class="dg-node" cx="80" cy="95" r="18"/><text class="dg-t" x="80" y="95">B</text>
+          <circle class="dg-node" cx="220" cy="95" r="18"/><text class="dg-t" x="220" y="95">C</text>
+          <circle class="dg-node alt" cx="50" cy="155" r="17"/><text class="dg-t on" x="50" y="155">D</text>
+          <circle class="dg-node gh" cx="110" cy="155" r="17"/><text class="dg-t" x="110" y="155">E</text>
+        </svg>
+        <div class="dg-cap" style="font-size:13px">图注:说明这张图在表达什么</div>
+      </div>
+      <div class="stack14">
+        <div class="cardx card-top" data-anim="fade-up">
+          <h4>要点卡片</h4>
+          <p>用卡片承载一段要点说明。</p>
+        </div>
+        <ul class="bul" data-anim="fade-up">
+          <li>菱形要点一,可 <b>加粗</b></li>
+          <li>菱形要点二,行内记号 <span class="k">O(log n)</span></li>
+          <li>菱形要点三</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+  <aside class="notes"><p>讲解这张图与右侧要点的逐字稿。</p></aside>
+</section>
+
+<!-- ============ 4. 章节分隔页 ============ -->
+<section class="slide" data-title="第一部分 · 标题">
+  <div class="slide-fx"></div>
+  <div class="divider2">
+    <div class="pn" data-anim="rise-in">I</div>
+    <h2 data-anim="fade-up">第 一 部 分</h2>
+    <p class="sub" data-anim="fade-up">这一部分的一句话主线</p>
+    <div class="chips" style="justify-content:center;margin-top:24px" data-anim="fade-up">
+      <span class="chip">子题一</span><span class="chip">子题二</span><span class="chip">子题三</span>
+    </div>
+  </div>
+  <aside class="notes"><p>过渡逐字稿:进入这一部分,核心是<strong>什么</strong>。</p></aside>
+</section>
+
+<!-- ============ 5. 算法页 · 代码块 + 迭代表 ============ -->
+<section class="slide" data-title="算法示例">
+  <div class="slide-fx"></div>
+  <div class="slide-inner">
+    <div class="eyebrow2" data-anim="fade-up">3 · 算法</div>
+    <h2 class="s-title" data-anim="fade-up">算法名 · 配考场手算表</h2>
+    <div class="rule"></div>
+    <div class="wrap-2" style="gap:30px">
+      <div class="stack14">
+        <pre class="codeblock sm" data-anim="fade-up"><span class="c-kw">void</span> <span class="c-fn">solve</span>(int v){  <span class="c-cm">// 主过程</span>
+  visited[v] = <span class="c-nu">1</span>;
+  printf(<span class="c-st">"%d "</span>, v);
+}</pre>
+        <div class="callout" data-anim="fade-up"><span class="lab">复杂度</span>时间 <b>O(?)</b>、空间 <b>O(?)</b>,由<b>存储结构</b>决定。</div>
+      </div>
+      <table class="mtx" data-anim="fade-up" style="font-size:13.5px">
+        <thead><tr><th>步骤</th><th>B</th><th>C</th><th>D</th><th>选</th></tr></thead>
+        <tbody>
+          <tr><th>S={A}</th><td class="pick">3</td><td>∞</td><td>∞</td><td>B</td></tr>
+          <tr><th>并入 B</th><td class="done">—</td><td class="upd">4</td><td>9</td><td>C</td></tr>
+          <tr><th>并入 C</th><td class="done">—</td><td class="done">—</td><td class="pick">6</td><td>D</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="callout warn" data-anim="fade-up" style="margin-top:16px"><span class="lab">易错</span>边界条件:空 / 单元素 / 不可达 / 环 —— 每条都回头想一遍。</div>
+  </div>
+  <aside class="notes"><p>逐步讲手算表:每一行<em>选了谁</em>、<em>更新了谁</em>。</p></aside>
+</section>
+
+<!-- ============ 6. 背诵清单页 · 双卡 ============ -->
+<section class="slide" data-title="背诵清单">
+  <div class="slide-fx"></div>
+  <div class="slide-inner">
+    <div class="eyebrow2" data-anim="fade-up">小结 · 背诵清单</div>
+    <h2 class="s-title sm" data-anim="fade-up">考前最后一遍 · 必背结论</h2>
+    <div class="rule"></div>
+    <div class="wrap-2" style="gap:28px">
+      <div class="cardx" data-anim="fade-up">
+        <h4 style="color:var(--accent)">主题甲 · 必背</h4>
+        <ul class="bul sm" style="margin-top:4px">
+          <li>结论一,记号 <span class="k">公式</span></li>
+          <li>结论二</li>
+          <li>结论三</li>
+        </ul>
+      </div>
+      <div class="cardx" data-anim="fade-up">
+        <h4 style="color:var(--accent)">主题乙 · 必背</h4>
+        <ul class="bul sm" style="margin-top:4px">
+          <li>结论一</li>
+          <li>结论二</li>
+          <li>结论三</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+  <aside class="notes"><p>把两栏快速念一遍,挑最该形成肌肉记忆的几条强调。</p></aside>
+</section>
+
+<!-- ============ 7. 结尾页 ============ -->
+<section class="slide" data-title="结尾">
+  <div class="slide-fx"></div>
+  <div class="cover tcenter" style="max-width:900px;text-align:center;margin:0 auto">
+    <span class="badge" data-anim="fade-down" style="margin:0 auto">● 课程线 · 一轮复习</span>
+    <h1 data-anim="fade-up" style="font-size:76px">一句收束的<span class="g">金句</span>。</h1>
+    <p class="sub" data-anim="fade-up" style="margin-left:auto;margin-right:auto">两句话重申主线,剩下交给练习。</p>
+    <div class="chips" style="justify-content:center;margin-top:30px" data-anim="fade-up">
+      <span class="chip"><span class="kbd">T</span> 切换暖色 / 深色</span>
+      <span class="chip"><span class="kbd">S</span> 演讲者视图</span>
+      <span class="chip"><span class="kbd">O</span> 总览</span>
+      <span class="chip"><span class="kbd">F</span> 全屏</span>
+    </div>
+  </div>
+  <aside class="notes"><p>收尾逐字稿:留一句主线总结,祝顺利。</p></aside>
+</section>
+
+  <div class="deck-foot">
+    <span>课程 · 章节名</span>
+    <span class="slide-number" data-current="1" data-total="7"></span>
+  </div>
+</div>
+<script src="assets/runtime.js"></script>
+</body>
+</html>
