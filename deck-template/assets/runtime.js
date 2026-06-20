@@ -12,7 +12,11 @@
  *   T  cycle themes (reads data-themes on <html> or <body>)
  *   A  cycle demo animation on current slide
  *   URL hash #/N  deep-link to slide N (1-based)
+ *   URL ?audit     flag any slide that overflows the 1920×1080 safe area
  *   Progress bar auto-managed
+ *
+ * The deck renders on a fixed 1920×1080 stage that is auto-scaled to fit any
+ * viewport (aspect-preserved, letterboxed) — see fitDeck().
  */
 (function () {
   'use strict';
@@ -216,6 +220,17 @@
       });
       document.body.appendChild(overview);
     }
+
+    /* ===== stage scale-to-fit =====
+     * The deck is a fixed 1920×1080 stage; scale it to fit the viewport
+     * (aspect-preserved, letterboxed). Layout is measured at design resolution,
+     * so a deck that fits on one screen fits on every screen. */
+    function fitDeck(){
+      const s = Math.min(window.innerWidth / 1920, window.innerHeight / 1080);
+      deck.style.setProperty('--deck-scale', s);
+    }
+    window.addEventListener('resize', fitDeck);
+    fitDeck();
 
     /* ===== navigation ===== */
     function go(n, fromRemote){
@@ -956,5 +971,68 @@
     window.addEventListener('hashchange', fromHash);
     fromHash();
     go(idx);
+
+    /* ===== overflow audit (open the deck with ?audit) =====
+     * Flags any slide whose content exceeds the 1920×1080 safe area, both in the
+     * console and as a corner badge. Measurement is scale-independent because the
+     * stage is always laid out at design resolution. */
+    if (/[?&]audit\b/.test(location.search || '')) runAudit();
+    function runAudit(){
+      function run(){
+        let overflowN = 0, tableN = 0, problemSlides = 0;
+        slides.forEach(function(s, i){
+          const cs = getComputedStyle(s);
+          const availH = s.clientHeight - parseFloat(cs.paddingTop) - parseFloat(cs.paddingBottom);
+          const availW = s.clientWidth - parseFloat(cs.paddingLeft) - parseFloat(cs.paddingRight);
+          const inner = s.querySelector('.slide-inner, .cover, .divider2') || s;
+          const over = inner.scrollHeight > availH + 1 || inner.scrollWidth > availW + 1;
+
+          /* table integrity — overflow checks can't see this. A utility class
+             such as .center (display:flex) on the <table> itself collapses
+             thead/tbody into side-by-side flex items, so the header row no
+             longer sits above the data row. Assert the table renders as
+             display:table AND that the first header cell stacks over the first
+             data cell. Misaligned tables still fit the safe area, so without
+             this check ?audit would silently report "all good". */
+          const tblProblems = [];
+          s.querySelectorAll('table').forEach(function(t, j){
+            const disp = getComputedStyle(t).display;
+            const th = t.querySelector('thead'), tb = t.querySelector('tbody');
+            const hl = th && th.rows[0] && th.rows[0].cells[0] ? th.rows[0].cells[0].getBoundingClientRect().left : null;
+            const bl = tb && tb.rows[0] && tb.rows[0].cells[0] ? tb.rows[0].cells[0].getBoundingClientRect().left : null;
+            if (disp !== 'table') tblProblems.push('表' + (j+1) + ' display=' + disp + '（应为 table）');
+            else if (hl !== null && bl !== null && Math.abs(hl - bl) > 1) tblProblems.push('表' + (j+1) + ' 表头与数据列错位');
+          });
+
+          const slideBad = over || tblProblems.length > 0;
+          s.classList.toggle('slide-overflow', slideBad);
+          if (slideBad) problemSlides++;
+          if (over) {
+            overflowN++;
+            console.warn('[audit] slide ' + (i+1) + ' "' + (s.getAttribute('data-title')||'') +
+              '" overflows: content ' + inner.scrollWidth + '×' + inner.scrollHeight +
+              ' > safe area ' + Math.round(availW) + '×' + Math.round(availH));
+          }
+          if (tblProblems.length) {
+            tableN++;
+            console.warn('[audit] slide ' + (i+1) + ' "' + (s.getAttribute('data-title')||'') +
+              '" 表格异常: ' + tblProblems.join('，'));
+          }
+        });
+        const allOk = problemSlides === 0;
+        const msg = allOk
+          ? ('✓ ' + slides.length + ' 页均通过')
+          : ('⚠ ' + problemSlides + '/' + slides.length + ' 页有问题（溢出 ' + overflowN + ' · 表格 ' + tableN + '）');
+        console.log('[audit] ' + msg);
+        let badge = document.querySelector('.audit-badge');
+        if (!badge) { badge = document.createElement('div'); badge.className = 'audit-badge'; document.body.appendChild(badge); }
+        badge.textContent = msg;
+        badge.style.cssText = 'position:fixed;top:12px;left:12px;z-index:9999;padding:8px 12px;border-radius:8px;' +
+          'font:600 13px/1.2 system-ui,sans-serif;color:#fff;box-shadow:0 4px 14px rgba(0,0,0,.25);background:' + (allOk ? '#1aaf6c' : '#e0445a');
+      }
+      /* wait for webfonts so measurements reflect real metrics */
+      if (document.fonts && document.fonts.ready) document.fonts.ready.then(function(){ setTimeout(run, 80); });
+      else setTimeout(run, 300);
+    }
   });
 })();

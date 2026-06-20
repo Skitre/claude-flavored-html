@@ -80,7 +80,11 @@
 .codeblock.sm{font-size:13px;line-height:1.62}
 
 /* ---------- data table ---------- */
-.tbl{width:100%;border-collapse:collapse;font-size:15.5px;background:var(--surface);
+/* display:table is locked explicitly: base.css's .center utility sets
+   display:flex, and .tbl/.center share specificity — without this, a
+   `<table class="tbl ... center">` becomes a flex container and thead/tbody
+   collapse side-by-side, misaligning headers from data. See bug/BUG-center-class-breaks-tables.md */
+.tbl{display:table;width:100%;border-collapse:collapse;font-size:15.5px;background:var(--surface);
   border:1px solid var(--border);border-radius:var(--radius-sm);overflow:hidden}
 .tbl th,.tbl td{padding:10px 14px;text-align:left;border-bottom:1px solid var(--border);color:var(--text-1)}
 .tbl thead th{background:var(--surface-2);font-family:var(--font-display);font-weight:600;
@@ -94,7 +98,8 @@
 .tbl .mut{color:var(--text-3)}
 
 /* ---------- matrix / iteration table (mono) ---------- */
-.mtx{border-collapse:collapse;font-family:var(--font-mono);font-size:15px;background:var(--surface);
+/* display:table locked — same .center/flex defense as .tbl above */
+.mtx{display:table;border-collapse:collapse;font-family:var(--font-mono);font-size:15px;background:var(--surface);
   border:1px solid var(--border);border-radius:var(--radius-sm);overflow:hidden}
 .mtx th,.mtx td{padding:8px 13px;text-align:center;border:1px solid var(--border);color:var(--text-1)}
 .mtx thead th,.mtx tbody th{background:var(--surface-2);font-weight:700;color:var(--text-2)}
@@ -123,6 +128,63 @@
 .dg-w.box{paint-order:stroke;stroke:var(--bg);stroke-width:4px}
 .dg-lbl{fill:var(--text-2);font:500 14px var(--font-sans);text-anchor:middle}
 .dg-cap{fill:var(--text-3);font:500 13px var(--font-sans);text-anchor:middle}
+
+/* ---------- 复合版式：对比 / 时间线 / 流程 / 目录 ---------- */
+
+/* 对比页：两栏卡片并立；`.vs` 修饰符(写在 .compare 上)切"卡·徽标·卡"三栏轨道，中间放 `.vs-badge` 徽标元素；
+   `.c3` 三栏无徽标。`.vs`(修饰符) 与 `.vs-badge`(徽标) 是两个不同的类——别重名，否则徽标样式会套到容器上。
+   逐行对齐的特性矩阵对比（复杂度/稳定性逐行比）请用 .tbl，别在这里硬凑。 */
+.compare{display:grid;grid-template-columns:1fr 1fr;gap:30px;align-items:stretch}
+.compare.c3{grid-template-columns:1fr 1fr 1fr;gap:22px}
+.compare.vs{grid-template-columns:1fr auto 1fr;gap:0 16px}
+.ccol{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);
+  padding:22px 24px;box-shadow:var(--shadow);display:flex;flex-direction:column;gap:10px;position:relative}
+.ccol h4{font-family:var(--font-display);font-size:22px;font-weight:600;margin:0;color:var(--text-1)}
+.ccol.win h4{padding-right:40px}
+.ccol .csub{font-size:13.5px;color:var(--text-3)}
+.ccol.win{box-shadow:0 0 0 1.5px color-mix(in srgb,var(--good) 45%,transparent),var(--shadow)}
+.ccol.win::after{content:"✓";position:absolute;top:14px;right:14px;width:26px;height:26px;border-radius:50%;
+  display:flex;align-items:center;justify-content:center;font-size:15px;font-weight:700;color:#fff;background:var(--good)}
+.vs-badge{align-self:center;justify-self:center;width:46px;height:46px;border-radius:50%;
+  display:flex;align-items:center;justify-content:center;font-family:var(--font-display);
+  font-weight:700;font-size:14px;letter-spacing:.04em;color:#fff;background:var(--grad);box-shadow:var(--shadow);z-index:2}
+
+/* 竖向时间线：左轨圆点，每点带阶段标签 + 标题 + 详述。强调"演进/时间"。
+   横向的阶段流转用 .flow。.on = 已到达（实心点）。 */
+.timeline{position:relative;padding-left:34px}
+.timeline::before{content:"";position:absolute;left:11px;top:8px;bottom:8px;width:2px;border-radius:2px;
+  background:linear-gradient(var(--accent),color-mix(in srgb,var(--accent) 26%,transparent))}
+.tl-item{position:relative;padding-bottom:24px}
+.tl-item:last-child{padding-bottom:0}
+.tl-item::before{content:"";position:absolute;left:-29px;top:5px;width:14px;height:14px;border-radius:50%;
+  background:var(--surface);border:3px solid var(--accent);box-shadow:0 0 0 4px var(--bg)}
+.tl-item.on::before{background:var(--accent)}
+.tl-when{display:block;font-family:var(--font-mono);font-size:13px;font-weight:600;color:var(--accent);
+  letter-spacing:.02em;margin-bottom:3px}
+.tl-item h4{font-family:var(--font-display);font-size:18px;font-weight:600;margin:0 0 4px;color:var(--text-1)}
+.tl-item p{font-size:15px;line-height:1.55;color:var(--text-2);margin:0}
+
+/* 横向流程/步骤链：并列步骤卡片 + → 连接，强调"顺序/流转"。建议 ≤5 步。 */
+.flow{display:flex;align-items:stretch;gap:30px}
+.fstep{flex:1;position:relative;background:var(--surface);border:1px solid var(--border);
+  border-radius:var(--radius);padding:16px 18px;box-shadow:var(--shadow);display:flex;flex-direction:column;gap:6px}
+.fstep-n{font-family:var(--font-display);font-size:22px;font-weight:700;line-height:1;
+  background:var(--grad);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent}
+.fstep h4{font-family:var(--font-display);font-size:16px;font-weight:600;margin:0;color:var(--text-1)}
+.fstep p{font-size:13.5px;line-height:1.5;color:var(--text-2);margin:0}
+.fstep:not(:last-child)::after{content:"→";position:absolute;right:-21px;top:50%;transform:translateY(-50%);
+  z-index:2;width:26px;height:26px;display:flex;align-items:center;justify-content:center;
+  font-size:20px;font-weight:700;color:var(--accent);background:var(--bg);border-radius:50%}
+
+/* 目录/Agenda：编号章节总览。默认单栏；.c2 两栏。 */
+.agenda{display:grid;grid-template-columns:1fr;gap:0}
+.agenda.c2{grid-template-columns:1fr 1fr;gap:6px 44px}
+.ag-item{display:flex;align-items:baseline;gap:18px;padding:15px 4px;border-bottom:1px solid var(--border)}
+.ag-item:last-child{border-bottom:none}
+.ag-num{flex:none;font-family:var(--font-display);font-size:30px;font-weight:700;line-height:1;min-width:42px;
+  background:var(--grad);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent}
+.ag-txt h4{font-family:var(--font-display);font-size:19px;font-weight:600;margin:0 0 2px;color:var(--text-1)}
+.ag-txt p{font-size:13.5px;color:var(--text-3);margin:0}
 
 /* ---------- cover ---------- */
 .cover{position:relative;z-index:1;max-width:1180px;margin:0 auto}

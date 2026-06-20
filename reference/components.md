@@ -226,3 +226,61 @@
 | `--font-display` | 标题字体(暖色=Fraunces 衬线) |
 
 渐变文字写法:`<span class="g">`(封面/结尾 h1 内)或 `class="gradient-text"`。
+
+---
+
+## 七、复合版式(对比 / 时间线 / 流程 / 目录)
+
+四个"整页级"版式,各解决一个高频场景。都用既有令牌,暖/深双主题自动适配。
+
+### 对比页 `compare`
+两栏(或三栏)卡片并立 PK;在 `.compare` 上加 `.vs` 修饰符、中间放 `.vs-badge` 渐变徽标;`.win` 给"推荐/胜出"栏加绿环 + ✓ 角标。**注意:`.vs`(修饰符,写在容器上)与 `.vs-badge`(徽标元素)是两个不同的类,切勿重名。**
+```html
+<div class="compare vs">
+  <div class="ccol">
+    <h4>方案 A</h4>
+    <span class="csub">一句话定位</span>
+    <ul class="bul sm"><li>要点</li></ul>
+  </div>
+  <div class="vs-badge">VS</div>
+  <div class="ccol win">
+    <h4>方案 B</h4>
+    <span class="csub">一句话定位</span>
+    <ul class="bul sm"><li>要点</li></ul>
+  </div>
+</div>
+```
+- 三栏:写 `class="compare c3"` + 三个 `.ccol`(不放 `.vs-badge` 徽标)。
+- **逐行对齐**的特性矩阵对比(如复杂度/稳定性逐行比)请用 `.tbl`,不要在这里硬凑。
+
+### 时间线 `timeline`(竖向)
+左轨圆点,每点带阶段标签 + 标题 + 详述。强调**演进/时间**;`.on` = 已到达(实心点)。
+```html
+<div class="timeline">
+  <div class="tl-item on">
+    <span class="tl-when">阶段一 · 1946</span>
+    <h4>标题</h4>
+    <p>详述。</p>
+  </div>
+</div>
+```
+- 横向的**阶段流转/流水线**用下面的 `.flow`,不要把时间线硬横排。
+
+### 流程 / 步骤链 `flow`(横向)
+并列步骤卡片 + → 连接,强调**顺序/流转**。建议 ≤ 5 步。
+```html
+<div class="flow">
+  <div class="fstep"><span class="fstep-n">1</span><h4>步骤名</h4><p>说明。</p></div>
+  <div class="fstep"><span class="fstep-n">2</span><h4>步骤名</h4><p>说明。</p></div>
+</div>
+```
+
+### 目录 / Agenda
+编号章节总览。默认单栏;`class="agenda c2"` 两栏。
+```html
+<div class="agenda c2">
+  <div class="ag-item"><span class="ag-num">1</span><div class="ag-txt"><h4>章节名</h4><p>一句说明</p></div></div>
+</div>
+```
+
+> 四者都可加 `data-anim="fade-up"`;`.compare` / `.agenda` 想逐项浮现,给每个子项分别加 `data-anim`。

@@ -167,7 +167,113 @@
   <aside class="notes"><p>把两栏快速念一遍,挑最该形成肌肉记忆的几条强调。</p></aside>
 </section>
 
-<!-- ============ 7. 结尾页 ============ -->
+<!-- ============ 7. 目录页 · agenda ============ -->
+<section class="slide" data-title="本讲路线">
+  <div class="slide-fx"></div>
+  <div class="slide-inner">
+    <div class="eyebrow2" data-anim="fade-up">导览</div>
+    <h2 class="s-title" data-anim="fade-up">本讲路线 · 四个核心结构</h2>
+    <div class="rule"></div>
+    <div class="agenda c2">
+      <div class="ag-item" data-anim="fade-up"><span class="ag-num">1</span><div class="ag-txt"><h4>二叉排序树 BST</h4><p>动态查找的基础结构</p></div></div>
+      <div class="ag-item" data-anim="fade-up"><span class="ag-num">2</span><div class="ag-txt"><h4>平衡二叉树 AVL</h4><p>控制高度,保证 O(log n)</p></div></div>
+      <div class="ag-item" data-anim="fade-up"><span class="ag-num">3</span><div class="ag-txt"><h4>B 树 / B+ 树</h4><p>外存索引,磁盘友好</p></div></div>
+      <div class="ag-item" data-anim="fade-up"><span class="ag-num">4</span><div class="ag-txt"><h4>散列表</h4><p>平均 O(1) 的直接定址</p></div></div>
+    </div>
+  </div>
+  <aside class="notes"><p>先给路线图:这四个结构是<em>查找</em>这条线的主干。</p></aside>
+</section>
+
+<!-- ============ 8. 对比页 · compare VS ============ -->
+<section class="slide" data-title="BST vs AVL">
+  <div class="slide-fx"></div>
+  <div class="slide-inner">
+    <div class="eyebrow2" data-anim="fade-up">对比</div>
+    <h2 class="s-title" data-anim="fade-up">BST vs AVL · 为什么要平衡</h2>
+    <div class="rule"></div>
+    <div class="compare vs">
+      <div class="ccol" data-anim="fade-up">
+        <h4>二叉排序树 BST</h4>
+        <span class="csub">动态、可能退化</span>
+        <ul class="bul sm">
+          <li>查找 <span class="k">O(h)</span>,h 受插入顺序影响</li>
+          <li>有序输入会退化成<b>链表</b>,h = O(n)</li>
+          <li>实现简单,适合随机数据</li>
+        </ul>
+      </div>
+      <div class="vs-badge">VS</div>
+      <div class="ccol win" data-anim="fade-up">
+        <h4>平衡二叉树 AVL</h4>
+        <span class="csub">自平衡、稳定高效</span>
+        <ul class="bul sm">
+          <li>任意结点左右子树高差 <span class="k">≤ 1</span></li>
+          <li>查找/插入/删除恒为 <b>O(log n)</b></li>
+          <li>代价:插入后需<b>旋转调整</b></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+  <aside class="notes"><p>对比说明:BST 的退化风险 vs AVL 的稳定 O(log n)。<em>平衡</em>是关键词。</p></aside>
+</section>
+
+<!-- ============ 9. 时间线 · timeline ============ -->
+<section class="slide" data-title="查找结构演进">
+  <div class="slide-fx"></div>
+  <div class="slide-inner">
+    <div class="eyebrow2" data-anim="fade-up">演进</div>
+    <h2 class="s-title" data-anim="fade-up">查找结构的演进</h2>
+    <div class="rule"></div>
+    <div class="wrap-2" style="gap:36px">
+      <div class="timeline">
+        <div class="tl-item on" data-anim="fade-up">
+          <span class="tl-when">阶段一</span>
+          <h4>顺序 / 折半查找</h4>
+          <p>静态表上的线性与二分思想,折半要求<b>有序</b>。</p>
+        </div>
+        <div class="tl-item on" data-anim="fade-up">
+          <span class="tl-when">阶段二</span>
+          <h4>二叉排序树</h4>
+          <p>把查找搬到树上,支持动态插入与删除。</p>
+        </div>
+        <div class="tl-item on" data-anim="fade-up">
+          <span class="tl-when">阶段三</span>
+          <h4>AVL / 红黑树</h4>
+          <p>引入<b>自平衡</b>,把最坏高度压到 O(log n)。</p>
+        </div>
+        <div class="tl-item" data-anim="fade-up">
+          <span class="tl-when">阶段四</span>
+          <h4>B 树 / 散列</h4>
+          <p>面向外存索引与平均 O(1) 的直接定址。</p>
+        </div>
+      </div>
+      <div class="stack14">
+        <div class="callout key" data-anim="fade-up"><span class="lab">主线</span>从"静态顺序"走向"动态平衡",核心是控制<b>高度</b>。</div>
+        <div class="callout tip" data-anim="fade-up"><span class="lab">考点</span>每种结构记<b>定义 + 复杂度 + 适用场景</b>三件套。</div>
+      </div>
+    </div>
+  </div>
+  <aside class="notes"><p>把查找这根线串起来:每个阶段解决了上一阶段的什么痛点。</p></aside>
+</section>
+
+<!-- ============ 10. 流程页 · flow ============ -->
+<section class="slide" data-title="AVL 插入调整流程">
+  <div class="slide-fx"></div>
+  <div class="slide-inner">
+    <div class="eyebrow2" data-anim="fade-up">算法流程</div>
+    <h2 class="s-title" data-anim="fade-up">AVL 插入后的再平衡流程</h2>
+    <div class="rule"></div>
+    <div class="flow" data-anim="fade-up">
+      <div class="fstep"><span class="fstep-n">1</span><h4>插入</h4><p>按 BST 规则插入新结点。</p></div>
+      <div class="fstep"><span class="fstep-n">2</span><h4>回溯更新</h4><p>自底向上更新各结点高度。</p></div>
+      <div class="fstep"><span class="fstep-n">3</span><h4>判失衡</h4><p>平衡因子 ∉ {−1,0,1} 即失衡。</p></div>
+      <div class="fstep"><span class="fstep-n">4</span><h4>旋转调整</h4><p>LL/RR/LR/RL 四情形对应旋转。</p></div>
+    </div>
+    <div class="callout warn" data-anim="fade-up" style="margin-top:18px"><span class="lab">易错</span>四种失衡的判定与旋转方向是<b>高频考点</b>,务必画图分清。</div>
+  </div>
+  <aside class="notes"><p>逐步讲:插入 → 更新 → 判定 → 旋转。重点是<em>四种失衡情形</em>。</p></aside>
+</section>
+
+<!-- ============ 11. 结尾页 ============ -->
 <section class="slide" data-title="结尾">
   <div class="slide-fx"></div>
   <div class="cover tcenter" style="max-width:900px;text-align:center;margin:0 auto">
@@ -186,7 +292,7 @@
 
   <div class="deck-foot">
     <span>课程 · 章节名</span>
-    <span class="slide-number" data-current="1" data-total="7"></span>
+    <span class="slide-number" data-current="1" data-total="11"></span>
   </div>
 </div>
 <script src="assets/runtime.js"></script>

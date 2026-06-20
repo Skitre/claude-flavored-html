@@ -40,5 +40,7 @@ Copy-Item ".\claude-flavored-html" ".\.claude\skills\claude-flavored-html" -Recu
 - Claude 会:建新文件夹 → 复制 `deck-template/` → 读 `components.md` → 逐页填内容 → 让你浏览器自检。
 
 ## 放映
-双击生成的 `index.html` 即可。快捷键:`← →`翻页、`T`换肤、`S`演讲者视图(逐字稿+计时器)、`O`总览、`F`全屏。
+双击生成的 `index.html` 即可。画面是 1920×1080 舞台,会**自动等比缩放**适配你的屏幕(留黑边),换屏不错位。
+快捷键:`← →`翻页、`T`换肤、`S`演讲者视图(逐字稿+计时器)、`O`总览、`F`全屏。
+排版自检:用 `index.html?audit` 打开,溢出的页会描红并在左上角给出统计。
 (网络字体需联网;离线也能用,只是回退到系统字体。)
