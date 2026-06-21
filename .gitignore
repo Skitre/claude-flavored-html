@@ -1,0 +1,7 @@
+# 本地排查/调试日志,不入库
+bug/
+
+# OS
+.DS_Store
+Thumbs.db
+desktop.ini
