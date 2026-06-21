@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html lang="zh-CN" data-themes="claude-warm,claude-dark" data-theme="claude-warm">
+<html lang="zh-CN" data-theme="claude-warm">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>课程 · 章节名</title>
+<title>演示标题</title>
 <link rel="stylesheet" href="assets/fonts.css">
 <link rel="stylesheet" href="assets/base.css">
 <link rel="stylesheet" href="assets/animations.css">
@@ -17,7 +17,7 @@
 <section class="slide is-active" data-title="封面">
   <div class="slide-fx"></div>
   <div class="cover">
-    <span class="badge" data-anim="fade-down">● 课程线 / 副标题</span>
+    <span class="badge" data-anim="fade-down">● 系列名 / 副标题</span>
     <h1 data-anim="fade-up">主标题 <span class="g">渐变词</span></h1>
     <p class="sub" data-anim="fade-up">一两句副说明,交代受众与目标。<br>可以换行。</p>
     <div class="chips" style="margin-top:30px" data-anim="fade-up">
@@ -26,9 +26,9 @@
       <span class="chip">关键词</span>
       <span class="chip">关键词</span>
     </div>
-    <p class="mut3" style="margin-top:34px;font-size:14px">按 <span class="kbd">T</span> 切换暖色 / 深色 &nbsp;·&nbsp; <span class="kbd">S</span> 演讲者视图 &nbsp;·&nbsp; <span class="kbd">O</span> 总览 &nbsp;·&nbsp; <span class="kbd">←</span> <span class="kbd">→</span> 翻页</p>
+    <p class="mut3" style="margin-top:34px;font-size:14px">按 <span class="kbd">S</span> 演讲者视图 &nbsp;·&nbsp; <span class="kbd">O</span> 总览 &nbsp;·&nbsp; <span class="kbd">←</span> <span class="kbd">→</span> 翻页</p>
   </div>
-  <aside class="notes"><p>开场逐字稿:这一讲我们讲<strong>什么</strong>,默认听众<em>已有什么基础</em>。用 strong 标重点、em 标术语。</p></aside>
+  <aside class="notes"><p>开场逐字稿:交代今天的<strong>主题</strong>,默认听众<em>已有什么背景</em>。用 strong 标重点、em 标术语。</p></aside>
 </section>
 
 <!-- ============ 2. 内容页 · 两栏(表格 + callout) ============ -->
@@ -48,9 +48,9 @@
         </tbody>
       </table>
       <div class="stack14">
-        <div class="callout key" data-anim="fade-up"><span class="lab">重点</span>最该记住的结论放这里,<b>关键词加粗</b>。</div>
-        <div class="callout warn" data-anim="fade-up"><span class="lab">易错</span>常见陷阱写这里。</div>
-        <div class="callout tip" data-anim="fade-up"><span class="lab">提示</span>补充说明写这里。</div>
+        <div class="callout key" data-anim="fade-up"><span class="lab">重点</span>最重要的结论放这里,<b>关键词加粗</b>。</div>
+        <div class="callout warn" data-anim="fade-up"><span class="lab">注意</span>需要注意的事项写这里。</div>
+        <div class="callout tip" data-anim="fade-up"><span class="lab">提示</span>补充建议写这里。</div>
       </div>
     </div>
   </div>
@@ -86,7 +86,7 @@
         </div>
         <ul class="bul" data-anim="fade-up">
           <li>菱形要点一,可 <b>加粗</b></li>
-          <li>菱形要点二,行内记号 <span class="k">O(log n)</span></li>
+          <li>菱形要点二,行内记号 <span class="k">var(--accent)</span></li>
           <li>菱形要点三</li>
         </ul>
       </div>
@@ -109,12 +109,12 @@
   <aside class="notes"><p>过渡逐字稿:进入这一部分,核心是<strong>什么</strong>。</p></aside>
 </section>
 
-<!-- ============ 5. 算法页 · 代码块 + 迭代表 ============ -->
-<section class="slide" data-title="算法示例">
+<!-- ============ 5. 代码 + 状态追踪表 ============ -->
+<section class="slide" data-title="代码与追踪表">
   <div class="slide-fx"></div>
   <div class="slide-inner">
-    <div class="eyebrow2" data-anim="fade-up">3 · 算法</div>
-    <h2 class="s-title" data-anim="fade-up">算法名 · 配考场手算表</h2>
+    <div class="eyebrow2" data-anim="fade-up">3 · 技术细节</div>
+    <h2 class="s-title" data-anim="fade-up">代码示例 · 配状态追踪表</h2>
     <div class="rule"></div>
     <div class="wrap-2" style="gap:30px">
       <div class="stack14">
@@ -122,40 +122,40 @@
   visited[v] = <span class="c-nu">1</span>;
   printf(<span class="c-st">"%d "</span>, v);
 }</pre>
-        <div class="callout" data-anim="fade-up"><span class="lab">复杂度</span>时间 <b>O(?)</b>、空间 <b>O(?)</b>,由<b>存储结构</b>决定。</div>
+        <div class="callout" data-anim="fade-up"><span class="lab">说明</span>这里用 callout 补充代码要点,<b>关键信息加粗</b>。</div>
       </div>
       <table class="mtx" data-anim="fade-up" style="font-size:13.5px">
-        <thead><tr><th>步骤</th><th>B</th><th>C</th><th>D</th><th>选</th></tr></thead>
+        <thead><tr><th>阶段</th><th>项 A</th><th>项 B</th><th>项 C</th><th>状态</th></tr></thead>
         <tbody>
-          <tr><th>S={A}</th><td class="pick">3</td><td>∞</td><td>∞</td><td>B</td></tr>
-          <tr><th>并入 B</th><td class="done">—</td><td class="upd">4</td><td>9</td><td>C</td></tr>
-          <tr><th>并入 C</th><td class="done">—</td><td class="done">—</td><td class="pick">6</td><td>D</td></tr>
+          <tr><th>第一轮</th><td class="pick">当前</td><td>待定</td><td>待定</td><td>进行中</td></tr>
+          <tr><th>第二轮</th><td class="done">—</td><td class="upd">已更新</td><td>待定</td><td>推进</td></tr>
+          <tr><th>第三轮</th><td class="done">—</td><td class="done">—</td><td class="pick">当前</td><td>收尾</td></tr>
         </tbody>
       </table>
     </div>
-    <div class="callout warn" data-anim="fade-up" style="margin-top:16px"><span class="lab">易错</span>边界条件:空 / 单元素 / 不可达 / 环 —— 每条都回头想一遍。</div>
+    <div class="callout warn" data-anim="fade-up" style="margin-top:16px"><span class="lab">注意</span>这里放 warn 类型的 callout,<b>强调重要注意事项</b>。</div>
   </div>
-  <aside class="notes"><p>逐步讲手算表:每一行<em>选了谁</em>、<em>更新了谁</em>。</p></aside>
+  <aside class="notes"><p>逐步讲追踪表:每一行<em>当前焦点是谁</em>、<em>哪些有变更</em>。</p></aside>
 </section>
 
-<!-- ============ 6. 背诵清单页 · 双卡 ============ -->
-<section class="slide" data-title="背诵清单">
+<!-- ============ 6. 要点总结页 · 双卡 ============ -->
+<section class="slide" data-title="要点回顾">
   <div class="slide-fx"></div>
   <div class="slide-inner">
-    <div class="eyebrow2" data-anim="fade-up">小结 · 背诵清单</div>
-    <h2 class="s-title sm" data-anim="fade-up">考前最后一遍 · 必背结论</h2>
+    <div class="eyebrow2" data-anim="fade-up">小结 · 要点回顾</div>
+    <h2 class="s-title sm" data-anim="fade-up">核心要点 · 一页速览</h2>
     <div class="rule"></div>
     <div class="wrap-2" style="gap:28px">
       <div class="cardx" data-anim="fade-up">
-        <h4 style="color:var(--accent)">主题甲 · 必背</h4>
+        <h4 style="color:var(--accent)">要点一览 · 左栏</h4>
         <ul class="bul sm" style="margin-top:4px">
-          <li>结论一,记号 <span class="k">公式</span></li>
+          <li>结论一,记号 <span class="k">标记</span></li>
           <li>结论二</li>
           <li>结论三</li>
         </ul>
       </div>
       <div class="cardx" data-anim="fade-up">
-        <h4 style="color:var(--accent)">主题乙 · 必背</h4>
+        <h4 style="color:var(--accent)">要点一览 · 右栏</h4>
         <ul class="bul sm" style="margin-top:4px">
           <li>结论一</li>
           <li>结论二</li>
@@ -164,124 +164,146 @@
       </div>
     </div>
   </div>
-  <aside class="notes"><p>把两栏快速念一遍,挑最该形成肌肉记忆的几条强调。</p></aside>
+  <aside class="notes"><p>把两栏快速过一遍,强调最核心的几条。</p></aside>
 </section>
 
-<!-- ============ 7. 目录页 · agenda ============ -->
-<section class="slide" data-title="本讲路线">
+<!-- ============ 7. 数据展示页 · stat + wrap-3 ============ -->
+<section class="slide" data-title="关键指标">
+  <div class="slide-fx"></div>
+  <div class="slide-inner">
+    <div class="eyebrow2" data-anim="fade-up">数据</div>
+    <h2 class="s-title" data-anim="fade-up">关键指标一览</h2>
+    <div class="rule"></div>
+    <div class="wrap-3">
+      <div class="cardx flat" data-anim="fade-up">
+        <div class="stat"><span class="n">99.7%</span><span class="l">指标名称 · 说明文字</span></div>
+      </div>
+      <div class="cardx flat" data-anim="fade-up">
+        <div class="stat"><span class="n">2.4x</span><span class="l">指标名称 · 说明文字</span></div>
+      </div>
+      <div class="cardx flat" data-anim="fade-up">
+        <div class="stat"><span class="n">↓38%</span><span class="l">指标名称 · 说明文字</span></div>
+      </div>
+    </div>
+    <div class="callout key" data-anim="fade-up" style="margin-top:24px"><span class="lab">洞察</span>用一句话总结数据背后的<b>核心结论</b>,引导听众关注最重要的变化。</div>
+  </div>
+  <aside class="notes"><p>先给三个数字的<strong>直觉冲击</strong>,再用 callout 点明<em>背后含义</em>。</p></aside>
+</section>
+
+<!-- ============ 8. 目录页 · agenda ============ -->
+<section class="slide" data-title="内容导览">
   <div class="slide-fx"></div>
   <div class="slide-inner">
     <div class="eyebrow2" data-anim="fade-up">导览</div>
-    <h2 class="s-title" data-anim="fade-up">本讲路线 · 四个核心结构</h2>
+    <h2 class="s-title" data-anim="fade-up">内容导览 · 四个主要板块</h2>
     <div class="rule"></div>
     <div class="agenda c2">
-      <div class="ag-item" data-anim="fade-up"><span class="ag-num">1</span><div class="ag-txt"><h4>二叉排序树 BST</h4><p>动态查找的基础结构</p></div></div>
-      <div class="ag-item" data-anim="fade-up"><span class="ag-num">2</span><div class="ag-txt"><h4>平衡二叉树 AVL</h4><p>控制高度,保证 O(log n)</p></div></div>
-      <div class="ag-item" data-anim="fade-up"><span class="ag-num">3</span><div class="ag-txt"><h4>B 树 / B+ 树</h4><p>外存索引,磁盘友好</p></div></div>
-      <div class="ag-item" data-anim="fade-up"><span class="ag-num">4</span><div class="ag-txt"><h4>散列表</h4><p>平均 O(1) 的直接定址</p></div></div>
+      <div class="ag-item" data-anim="fade-up"><span class="ag-num">1</span><div class="ag-txt"><h4>开篇与背景</h4><p>交代主题的上下文</p></div></div>
+      <div class="ag-item" data-anim="fade-up"><span class="ag-num">2</span><div class="ag-txt"><h4>核心内容</h4><p>最重要的论点与论据</p></div></div>
+      <div class="ag-item" data-anim="fade-up"><span class="ag-num">3</span><div class="ag-txt"><h4>方案与对比</h4><p>不同路径的优劣分析</p></div></div>
+      <div class="ag-item" data-anim="fade-up"><span class="ag-num">4</span><div class="ag-txt"><h4>总结与下一步</h4><p>收束主线,给出行动建议</p></div></div>
     </div>
   </div>
-  <aside class="notes"><p>先给路线图:这四个结构是<em>查找</em>这条线的主干。</p></aside>
+  <aside class="notes"><p>先给路线图:让听众知道接下来会讲什么。</p></aside>
 </section>
 
-<!-- ============ 8. 对比页 · compare VS ============ -->
-<section class="slide" data-title="BST vs AVL">
+<!-- ============ 9. 对比页 · compare VS ============ -->
+<section class="slide" data-title="方案 A vs 方案 B">
   <div class="slide-fx"></div>
   <div class="slide-inner">
     <div class="eyebrow2" data-anim="fade-up">对比</div>
-    <h2 class="s-title" data-anim="fade-up">BST vs AVL · 为什么要平衡</h2>
+    <h2 class="s-title" data-anim="fade-up">方案 A vs 方案 B · 如何取舍</h2>
     <div class="rule"></div>
     <div class="compare vs">
       <div class="ccol" data-anim="fade-up">
-        <h4>二叉排序树 BST</h4>
-        <span class="csub">动态、可能退化</span>
+        <h4>方案 A</h4>
+        <span class="csub">特点一句话</span>
         <ul class="bul sm">
-          <li>查找 <span class="k">O(h)</span>,h 受插入顺序影响</li>
-          <li>有序输入会退化成<b>链表</b>,h = O(n)</li>
-          <li>实现简单,适合随机数据</li>
+          <li>优势一,<span class="k">标记</span> 行内高亮</li>
+          <li>某种局限用 <b>加粗</b> 强调</li>
+          <li>适用场景说明</li>
         </ul>
       </div>
       <div class="vs-badge">VS</div>
       <div class="ccol win" data-anim="fade-up">
-        <h4>平衡二叉树 AVL</h4>
-        <span class="csub">自平衡、稳定高效</span>
+        <h4>方案 B</h4>
+        <span class="csub">特点一句话</span>
         <ul class="bul sm">
-          <li>任意结点左右子树高差 <span class="k">≤ 1</span></li>
-          <li>查找/插入/删除恒为 <b>O(log n)</b></li>
-          <li>代价:插入后需<b>旋转调整</b></li>
+          <li>优势一,<span class="k">标记</span> 行内高亮</li>
+          <li>优势二,<b>加粗</b> 强调关键词</li>
+          <li>代价:需要额外成本</li>
         </ul>
       </div>
     </div>
   </div>
-  <aside class="notes"><p>对比说明:BST 的退化风险 vs AVL 的稳定 O(log n)。<em>平衡</em>是关键词。</p></aside>
+  <aside class="notes"><p>对比两个方案的<strong>核心差异</strong>,引导听众理解<em>取舍逻辑</em>。</p></aside>
 </section>
 
-<!-- ============ 9. 时间线 · timeline ============ -->
-<section class="slide" data-title="查找结构演进">
+<!-- ============ 10. 时间线 · timeline ============ -->
+<section class="slide" data-title="发展历程">
   <div class="slide-fx"></div>
   <div class="slide-inner">
     <div class="eyebrow2" data-anim="fade-up">演进</div>
-    <h2 class="s-title" data-anim="fade-up">查找结构的演进</h2>
+    <h2 class="s-title" data-anim="fade-up">发展历程</h2>
     <div class="rule"></div>
     <div class="wrap-2" style="gap:36px">
       <div class="timeline">
         <div class="tl-item on" data-anim="fade-up">
           <span class="tl-when">阶段一</span>
-          <h4>顺序 / 折半查找</h4>
-          <p>静态表上的线性与二分思想,折半要求<b>有序</b>。</p>
+          <h4>起步阶段</h4>
+          <p>项目或领域的初始状态,用 <b>加粗</b> 标关键词。</p>
         </div>
         <div class="tl-item on" data-anim="fade-up">
           <span class="tl-when">阶段二</span>
-          <h4>二叉排序树</h4>
-          <p>把查找搬到树上,支持动态插入与删除。</p>
+          <h4>成长阶段</h4>
+          <p>引入新方法,解决初期的核心痛点。</p>
         </div>
         <div class="tl-item on" data-anim="fade-up">
           <span class="tl-when">阶段三</span>
-          <h4>AVL / 红黑树</h4>
-          <p>引入<b>自平衡</b>,把最坏高度压到 O(log n)。</p>
+          <h4>成熟阶段</h4>
+          <p>进一步优化,<b>稳定性</b>成为主要目标。</p>
         </div>
         <div class="tl-item" data-anim="fade-up">
           <span class="tl-when">阶段四</span>
-          <h4>B 树 / 散列</h4>
-          <p>面向外存索引与平均 O(1) 的直接定址。</p>
+          <h4>展望</h4>
+          <p>面向未来的新方向。</p>
         </div>
       </div>
       <div class="stack14">
-        <div class="callout key" data-anim="fade-up"><span class="lab">主线</span>从"静态顺序"走向"动态平衡",核心是控制<b>高度</b>。</div>
-        <div class="callout tip" data-anim="fade-up"><span class="lab">考点</span>每种结构记<b>定义 + 复杂度 + 适用场景</b>三件套。</div>
+        <div class="callout key" data-anim="fade-up"><span class="lab">主线</span>用 key callout 总结贯穿全程的主线,<b>加粗</b>核心关键词。</div>
+        <div class="callout tip" data-anim="fade-up"><span class="lab">提示</span>用 tip callout 补充延伸建议。</div>
       </div>
     </div>
   </div>
-  <aside class="notes"><p>把查找这根线串起来:每个阶段解决了上一阶段的什么痛点。</p></aside>
+  <aside class="notes"><p>把主线串起来:每个阶段解决了上一阶段的什么<strong>痛点</strong>。</p></aside>
 </section>
 
-<!-- ============ 10. 流程页 · flow ============ -->
-<section class="slide" data-title="AVL 插入调整流程">
+<!-- ============ 11. 流程页 · flow ============ -->
+<section class="slide" data-title="工作流程示例">
   <div class="slide-fx"></div>
   <div class="slide-inner">
-    <div class="eyebrow2" data-anim="fade-up">算法流程</div>
-    <h2 class="s-title" data-anim="fade-up">AVL 插入后的再平衡流程</h2>
+    <div class="eyebrow2" data-anim="fade-up">流程</div>
+    <h2 class="s-title" data-anim="fade-up">四步工作流程</h2>
     <div class="rule"></div>
     <div class="flow" data-anim="fade-up">
-      <div class="fstep"><span class="fstep-n">1</span><h4>插入</h4><p>按 BST 规则插入新结点。</p></div>
-      <div class="fstep"><span class="fstep-n">2</span><h4>回溯更新</h4><p>自底向上更新各结点高度。</p></div>
-      <div class="fstep"><span class="fstep-n">3</span><h4>判失衡</h4><p>平衡因子 ∉ {−1,0,1} 即失衡。</p></div>
-      <div class="fstep"><span class="fstep-n">4</span><h4>旋转调整</h4><p>LL/RR/LR/RL 四情形对应旋转。</p></div>
+      <div class="fstep"><span class="fstep-n">1</span><h4>准备</h4><p>明确目标,收集素材与需求。</p></div>
+      <div class="fstep"><span class="fstep-n">2</span><h4>执行</h4><p>按计划推进,记录关键节点。</p></div>
+      <div class="fstep"><span class="fstep-n">3</span><h4>检验</h4><p>对照目标核查,发现偏差。</p></div>
+      <div class="fstep"><span class="fstep-n">4</span><h4>改进</h4><p>针对偏差调整,进入下一轮迭代。</p></div>
     </div>
-    <div class="callout warn" data-anim="fade-up" style="margin-top:18px"><span class="lab">易错</span>四种失衡的判定与旋转方向是<b>高频考点</b>,务必画图分清。</div>
+    <div class="callout warn" data-anim="fade-up" style="margin-top:18px"><span class="lab">注意</span>用 warn callout 提示容易忽略的<b>关键环节</b>。</div>
   </div>
-  <aside class="notes"><p>逐步讲:插入 → 更新 → 判定 → 旋转。重点是<em>四种失衡情形</em>。</p></aside>
+  <aside class="notes"><p>逐步讲:准备 → 执行 → 检验 → 改进。重点是<em>闭环迭代</em>的思路。</p></aside>
 </section>
 
-<!-- ============ 11. 结尾页 ============ -->
+<!-- ============ 12. 结尾页 ============ -->
 <section class="slide" data-title="结尾">
   <div class="slide-fx"></div>
   <div class="cover tcenter" style="max-width:900px;text-align:center;margin:0 auto">
-    <span class="badge" data-anim="fade-down" style="margin:0 auto">● 课程线 · 一轮复习</span>
+    <span class="badge" data-anim="fade-down" style="margin:0 auto">● 系列名 · 结束语</span>
     <h1 data-anim="fade-up" style="font-size:76px">一句收束的<span class="g">金句</span>。</h1>
-    <p class="sub" data-anim="fade-up" style="margin-left:auto;margin-right:auto">两句话重申主线,剩下交给练习。</p>
+    <p class="sub" data-anim="fade-up" style="margin-left:auto;margin-right:auto">两句话重申主线,引出下一步行动。</p>
     <div class="chips" style="justify-content:center;margin-top:30px" data-anim="fade-up">
-      <span class="chip"><span class="kbd">T</span> 切换暖色 / 深色</span>
       <span class="chip"><span class="kbd">S</span> 演讲者视图</span>
       <span class="chip"><span class="kbd">O</span> 总览</span>
       <span class="chip"><span class="kbd">F</span> 全屏</span>
@@ -291,8 +313,8 @@
 </section>
 
   <div class="deck-foot">
-    <span>课程 · 章节名</span>
-    <span class="slide-number" data-current="1" data-total="11"></span>
+    <span>系列名 · 主题</span>
+    <span class="slide-number" data-current="1" data-total="12"></span>
   </div>
 </div>
 <script src="assets/runtime.js"></script>

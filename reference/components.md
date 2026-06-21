@@ -8,10 +8,10 @@
 
 ### 内容页(最常用)
 ```html
-<section class="slide" data-title="二叉排序树">
+<section class="slide" data-title="页面标题">
   <div class="slide-fx"></div>
   <div class="slide-inner">
-    <div class="eyebrow2" data-anim="fade-up">3 · 查找</div>   <!-- 序号·小节名,序号随小节递增 -->
+    <div class="eyebrow2" data-anim="fade-up">1 · 小节名</div>   <!-- 序号·小节名,序号随小节递增 -->
     <h2 class="s-title" data-anim="fade-up">本页大标题</h2>     <!-- 标题长可加 class="s-title sm" -->
     <div class="rule"></div>                                   <!-- 渐变小横线 -->
 
@@ -29,14 +29,14 @@
 <section class="slide is-active" data-title="封面">
   <div class="slide-fx"></div>
   <div class="cover">
-    <span class="badge" data-anim="fade-down">● 副标题 / 课程线</span>
+    <span class="badge" data-anim="fade-down">● 副标题 / 系列名</span>
     <h1 data-anim="fade-up">主标题 <span class="g">渐变词</span></h1>
     <p class="sub" data-anim="fade-up">一两句副说明。<br>可换行。</p>
     <div class="chips" style="margin-top:30px" data-anim="fade-up">
       <span class="chip"><span class="d"></span>关键词</span>
       <span class="chip">关键词</span>
     </div>
-    <p class="mut3" style="margin-top:34px;font-size:14px">按 <span class="kbd">T</span> 换肤 · <span class="kbd">S</span> 演讲者视图 · <span class="kbd">←</span> <span class="kbd">→</span> 翻页</p>
+    <p class="mut3" style="margin-top:34px;font-size:14px">按 <span class="kbd">S</span> 演讲者视图 · <span class="kbd">←</span> <span class="kbd">→</span> 翻页</p>
   </div>
   <aside class="notes"><p>开场逐字稿。</p></aside>
 </section>
@@ -44,14 +44,14 @@
 
 ### 章节分隔页
 ```html
-<section class="slide" data-title="第二部分 · 散列">
+<section class="slide" data-title="第二部分 · 标题">
   <div class="slide-fx"></div>
   <div class="divider2">
     <div class="pn" data-anim="rise-in">II</div>      <!-- 巨大罗马数字 -->
-    <h2 data-anim="fade-up">散 列 表</h2>
-    <p class="sub" data-anim="fade-up">用关键字直接算出存储位置</p>
+    <h2 data-anim="fade-up">章 节 名</h2>
+    <p class="sub" data-anim="fade-up">这一部分的一句话主线</p>
     <div class="chips" style="justify-content:center;margin-top:24px" data-anim="fade-up">
-      <span class="chip">散列函数</span><span class="chip">冲突处理</span><span class="chip">查找效率</span>
+      <span class="chip">子题一</span><span class="chip">子题二</span><span class="chip">子题三</span>
     </div>
   </div>
   <aside class="notes"><p>过渡逐字稿。</p></aside>
@@ -63,7 +63,7 @@
 <section class="slide" data-title="结尾">
   <div class="slide-fx"></div>
   <div class="cover tcenter" style="max-width:900px;text-align:center;margin:0 auto">
-    <span class="badge" data-anim="fade-down" style="margin:0 auto">● 课程线 · 一轮复习</span>
+    <span class="badge" data-anim="fade-down" style="margin:0 auto">● 系列名 · 结束语</span>
     <h1 data-anim="fade-up" style="font-size:76px">一句收束的<span class="g">金句</span>。</h1>
     <p class="sub" data-anim="fade-up" style="margin-left:auto;margin-right:auto">两句总结主线。</p>
   </div>
@@ -73,7 +73,7 @@
 
 > 整份文件最底部、`</div>`(关闭 .deck)之前,放一次页脚:
 > ```html
-> <div class="deck-foot"><span>课程 · 章节名</span><span class="slide-number" data-current="1" data-total="N"></span></div>
+> <div class="deck-foot"><span>系列名 · 主题</span><span class="slide-number" data-current="1" data-total="N"></span></div>
 > ```
 
 ---
@@ -105,7 +105,7 @@
 ```html
 <div class="callout key" data-anim="fade-up"><span class="lab">标签</span>正文,可用 <b>加粗</b>。</div>
 ```
-变体:无修饰=蓝紫(中性)、`key`=绿(重点结论)、`warn`=红(易错)、`tip`=橙(提示)。`<span class="lab">` 是小标签,必放第一个。
+变体:无修饰=蓝紫(中性)、`key`=绿(重要结论)、`warn`=红(注意事项)、`tip`=橙(补充建议)。`<span class="lab">` 是小标签,必放第一个。
 
 ### 胶囊 chip
 ```html
@@ -136,17 +136,17 @@
 </table>
 ```
 
-### 算法迭代表(手算过程,Dijkstra/Prim/拓扑等)
+### 状态追踪表(逐步过程:算法手算、项目状态、特性对照等)
 ```html
 <table class="mtx" data-anim="fade-up" style="font-size:13.5px">
-  <thead><tr><th>步骤</th><th>B</th><th>C</th><th>并入</th></tr></thead>
+  <thead><tr><th>阶段</th><th>项 A</th><th>项 B</th><th>状态</th></tr></thead>
   <tbody>
-    <tr><th>S={A}</th><td class="pick">3</td><td>∞</td><td>C</td></tr>  <!-- pick=本轮选中 -->
-    <tr><th>并入 C</th><td class="done">—</td><td class="upd">4</td><td>B</td></tr> <!-- done=已处理 upd=被更新 -->
+    <tr><th>第一轮</th><td class="pick">当前</td><td>待定</td><td>进行中</td></tr>  <!-- pick=当前焦点 -->
+    <tr><th>第二轮</th><td class="done">—</td><td class="upd">已更新</td><td>推进</td></tr> <!-- done=已完成 upd=有变更 -->
   </tbody>
 </table>
 ```
-单元格状态:`pick`(选中,橙底)、`upd`(更新,绿底)、`done`(已处理,灰)。
+单元格状态:`pick`(当前焦点,橙底)、`upd`(有变更,绿底)、`done`(已完成,灰)。适用场景:算法手算过程、项目迭代状态、特性版本追踪等任何需要逐步标记进度的表格。
 
 ### 行内元素
 | 写法 | 效果 |
@@ -170,9 +170,22 @@
 ```
 着色 class:`c-kw`关键字、`c-cm`注释、`c-st`字符串、`c-fn`函数名、`c-nu`数字。`sm`=小字。
 
+### 图片
+```html
+<img src="assets/example.png" alt="说明文字"
+     style="width:100%;max-width:720px;border-radius:var(--radius);box-shadow:var(--shadow)"
+     data-anim="fade-up">
+<div class="dg-cap" style="font-size:13px">图注:说明这张图在表达什么</div>
+```
+约定:
+- **宽度**:单栏满宽用 `width:100%`;双栏中用 `max-width:480px~600px`;全幅大图 `max-width:720px`。高度自适应,不要写死 `height`。
+- **圆角与阴影**:统一用 `border-radius:var(--radius);box-shadow:var(--shadow)`,截图/照片加阴影更有层次,图标/示意图可省略阴影。
+- **图注**:借用 `.dg-cap` 即可(它就是一行小字居中)。
+- **图文搭配**:用 `wrap-12`(图略大)或 `wrap-21`(图文等宽居中)把图片放一栏、文字放另一栏。
+
 ---
 
-## 四、SVG 图(树 / 查找树 / 图 / 散列冲突链,全部自绘)
+## 四、SVG 图(树 / 关系图 / 流程图 / 网络拓扑等,全部自绘)
 
 ```html
 <svg class="dg" viewBox="0 0 300 175" width="320" data-anim="fade-up">
@@ -231,7 +244,7 @@
 
 ## 七、复合版式(对比 / 时间线 / 流程 / 目录)
 
-四个"整页级"版式,各解决一个高频场景。都用既有令牌,暖/深双主题自动适配。
+四个"整页级"版式,各解决一个高频场景。都用既有令牌。
 
 ### 对比页 `compare`
 两栏(或三栏)卡片并立 PK;在 `.compare` 上加 `.vs` 修饰符、中间放 `.vs-badge` 渐变徽标;`.win` 给"推荐/胜出"栏加绿环 + ✓ 角标。**注意:`.vs`(修饰符,写在容器上)与 `.vs-badge`(徽标元素)是两个不同的类,切勿重名。**
